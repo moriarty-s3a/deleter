@@ -1,0 +1,32 @@
+{
+  "default": {
+    "retentionDays": "30"
+  },
+  "companies": [
+    {
+      "companyId": "0",
+      "companyName": "We Build Stuff",
+      "retentionDays": "180"
+    },
+    {
+      "companyId": "1",
+      "companyName": "We Sell Stuff",
+      "retentionDays": "10"
+    },
+    {
+      "companyId": "2",
+      "companyName": "We Buy Stuff",
+      "retentionDays": "45"
+    },
+    {
+      "companyId": "3",
+      "companyName": "We Make the World Better",
+      "retentionDays": "90"
+    },
+    {
+      "companyId": "4",
+      "companyName": "We Cheat You",
+      "retentionDays": "7"
+    }
+  ]
+}
