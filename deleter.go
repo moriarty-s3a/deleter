@@ -28,7 +28,7 @@ func main() {
 	config := readConfig()
 	log.Debugln("Config= ", config)
 	configMap := convertConfigToMap(config)
-	currTime := time.Now()
+	currTime := time.Now().UTC()
 	companyDirs, err := ioutil.ReadDir(baseDir)
 	if err != nil {
 		// Not much we can do if we can't read the base directory. Something went very wrong.
@@ -111,7 +111,7 @@ func getCompareDate(path string, baseLen int) time.Time {
 		return time.Date(year, time.Month(month), day, hour + 1, 0, 0, 0, time.Local).Add(-1 * time.Second)
 	}
 	min := getDatePiece(pathArray, baseLen, 5)
-	return time.Date(year, time.Month(month), day, hour, min, 0, 0, time.Local).Add(-1 * time.Second)
+	return time.Date(year, time.Month(month), day, hour, min + 1, 0, 0, time.Local).Add(-1 * time.Second)
 }
 
 func getDatePiece(pathArray [] string, baseLen int, idx int) int {
