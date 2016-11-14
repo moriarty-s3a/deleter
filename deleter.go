@@ -28,7 +28,7 @@ func main() {
 	config := readConfig()
 	log.Debugln("Config= ", config)
 	configMap := convertConfigToMap(config)
-	currTime := time.Now().UTC()
+	currTime := time.Now()
 	companyDirs, err := ioutil.ReadDir(baseDir)
 	if err != nil {
 		// Not much we can do if we can't read the base directory. Something went very wrong.
@@ -96,22 +96,22 @@ func getCompareDate(path string, baseLen int) time.Time {
 	}
 	year := getDatePiece(pathArray, baseLen, 1)
 	if pathLen < baseLen + 3 {
-		return time.Date(year + 1, 0, 0, 0, 0, 0, 0, time.Local).Add(-1 * time.Second)
+		return time.Date(year + 1, 0, 0, 0, 0, 0, 0, time.UTC).Add(-1 * time.Second)
 	}
 	month := getDatePiece(pathArray, baseLen, 2)
 	if pathLen < baseLen + 4 {
-		return time.Date(year, time.Month(month + 1), 0, 0, 0, 0, 0, time.Local).Add(-1 * time.Second)
+		return time.Date(year, time.Month(month + 1), 0, 0, 0, 0, 0, time.UTC).Add(-1 * time.Second)
 	}
 	day := getDatePiece(pathArray, baseLen, 3)
 	if pathLen < baseLen + 5 {
-		return time.Date(year, time.Month(month), day + 1, 0, 0, 0, 0, time.Local).Add(-1 * time.Second)
+		return time.Date(year, time.Month(month), day + 1, 0, 0, 0, 0, time.UTC).Add(-1 * time.Second)
 	}
 	hour := getDatePiece(pathArray, baseLen, 4)
 	if pathLen < baseLen + 6 {
-		return time.Date(year, time.Month(month), day, hour + 1, 0, 0, 0, time.Local).Add(-1 * time.Second)
+		return time.Date(year, time.Month(month), day, hour + 1, 0, 0, 0, time.UTC).Add(-1 * time.Second)
 	}
 	min := getDatePiece(pathArray, baseLen, 5)
-	return time.Date(year, time.Month(month), day, hour, min + 1, 0, 0, time.Local).Add(-1 * time.Second)
+	return time.Date(year, time.Month(month), day, hour, min + 1, 0, 0, time.UTC).Add(-1 * time.Second)
 }
 
 func getDatePiece(pathArray [] string, baseLen int, idx int) int {
